@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Simple deployment</h1>
+    <a :href="githubUrl">Auth github</a>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      activeTab: 'dns',
+      githubUrl: 'https://github.com/login/oauth/authorize?scope=user:email&client_id=Iv1.a4b1e2d734263dae' 
+    }
   }
 }
 </script>

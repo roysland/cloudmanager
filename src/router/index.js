@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import CreateService from '@/views/CreateService.vue'
+import ServiceRoutes from '@/views/service'
+import Login from '@/views/Login'
+import Callback from '@/views/Callback'
+import ServiceWizard from '@/views/serviceWizard'
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,6 +14,23 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/callback',
+    name: 'Callback',
+    component: Callback
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/createService',
+    name: 'CreateService',
+    component: CreateService
+  },
+  ServiceRoutes,
+  ServiceWizard,
   {
     path: '/about',
     name: 'About',
@@ -21,7 +42,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 export default router

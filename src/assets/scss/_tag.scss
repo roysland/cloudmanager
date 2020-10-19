@@ -1,0 +1,12 @@
+.tag {
+    display: inline-flex;
+    padding: 6px 10px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-weight: 500;
+    text-transform: lowercase;
+    &.blue {
+        color: #3888ff;
+        background: rgba(56,136,255,.11);
+    }
+}

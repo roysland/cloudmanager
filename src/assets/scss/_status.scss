@@ -1,0 +1,29 @@
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    margin-right: 10px;
+    &:after {
+        border-radius: 2px;
+        content: "";
+        width: 6px;
+        height: 6px;
+    }
+    &.success {
+        background: transparentize($green, .79);
+        border: .4px solid transparentize($green, .79);
+        &:after {
+            background: $green;
+        }
+    }
+    &.error {
+        background: transparentize($red, .79);
+        border: .4px solid transparentize($red, .79);
+        &:after {
+            background: $red;
+        }
+    }
+}

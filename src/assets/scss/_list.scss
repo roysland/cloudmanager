@@ -1,0 +1,19 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    .feather {
+        margin-right: 1rem;
+        height: 24px;
+        width: 24px;
+    }
+    .text {
+        font-size: 13px;
+        strong, small {
+            display: block;
+        }
+    }
+}
+.list {
+    margin: 0;
+}

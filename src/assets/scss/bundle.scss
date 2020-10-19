@@ -1,0 +1,31 @@
+@import "variables";
+
+@import "base";
+@import "alert";
+@import "button";
+@import "form";
+@import "menu";
+@import "panel";
+@import "status";
+@import "tabs";
+@import "tag";
+@import "avatar";
+@import "typography";
+@import "flex";
+@import "nav";
+
+@import "list";
+// Layouts
+@import "layouts/sidebar";
+
+@import "utils/spacing";
+
+.feather {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }

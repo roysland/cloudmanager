@@ -1,0 +1,108 @@
+@mixin button-variant ($color) {
+    &:hover {
+        background-color: darken($color, 5); 
+     }
+     &:active {
+         background-color: darken($color, 10); 
+     }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.btn {
+    cursor: pointer;
+    background: none;
+    display: inline-flex;
+    border: 1px solid $border-color;
+    align-items: center;
+    user-select: none;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 700;
+    padding: 12px 14px 11px;
+    min-height: 40px;
+    font-family: inherit;
+    border-radius: 6px;
+    outline: none;
+    margin-right: 1rem;
+    &.block {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    i {
+        font-size: 16px;
+        margin: 0;
+    }
+    &.loading {
+        
+        i {
+            transition: transform 1000ms linear;
+            animation: spin 1000ms linear infinite;
+        }
+    }
+    &.icon-before {
+        i {
+            margin-right: 8px;
+        }
+    }
+    &.icon-after {
+        i {
+            margin-left: 8px;
+        }
+    }
+    &.default {
+        color: #1e2a2f;
+        border-color: #eee;
+        background-color: #eee;
+        
+    }
+    &.primary {
+        border-color: $primary;
+        background-color: $primary;
+        color: #fff;
+        @include button-variant($primary);
+    }
+    @each $name, $color in $colors {
+        &.#{$name} {
+            border-color: $color;
+            background-color: $color;
+            color: #fff;
+            @include button-variant($color);
+        }
+    }
+    &.error {
+        border-color: $red;
+        background-color: $red;
+        color: #fff;
+        @include button-variant($red);
+    }
+    &:disabled {
+        border-color: #f0f0f0;
+        background-color: #f0f0f0;
+        color: #b0b0b0;
+        cursor: not-allowed;
+        &:hover, &:active {
+            background: #f0f0f0;
+        }
+    }
+    &.icon {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 4px;
+        justify-content: center;
+        border: none;
+        i {
+            margin: 0;
+            font-size: 18px;
+            color: $text-muted;
+        }
+    }
+}

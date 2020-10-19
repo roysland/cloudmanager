@@ -1,0 +1,26 @@
+$border-color: rgba(36,52,70,.11);
+
+$font-family: 'Proxima Soft', sans-serif;
+
+$primary: #3888FF;
+$text-color: rgba(36,52,70,.85);
+$text-muted:  rgba(36,52,70,.50);
+
+$blue: #3888ff;
+$orange: #ff8a00;
+$green: #66d68c;
+$purple: #5200ff;
+$red: #ff3838;
+$lightblue: #00b2ff;
+$pink: #ff38eb;
+
+$colors: (
+    'default': #eee,
+    'blue': $blue,
+    'orange': $orange,
+    'green': $green,
+    'purple': $purple,
+    'red': $red,
+    'lightblue': $lightblue,
+    'pink': $pink
+);

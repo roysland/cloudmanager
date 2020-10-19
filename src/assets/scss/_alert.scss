@@ -1,0 +1,29 @@
+@function color($color) {
+    @return map-get($colors, $color);
+}
+@mixin alert-variant ($color) {
+
+    background-color: transparentize($color, 0.9);
+    border-color: transparentize($color, 0.1);
+    color: darken($color, 10);
+}
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    font-size: 13px;
+    i {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+    div {
+        flex-grow: 1;
+    }
+    @each $name, $color in $colors {
+        &.#{$name} {
+            @include alert-variant($color);
+        }
+    }
+}

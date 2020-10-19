@@ -1,0 +1,45 @@
+.tabs {
+    display: flex;
+    align-items: center;
+    a {
+        margin-right: 15px;
+        font-size: 15px;
+        padding: 10px 10px;
+        position: relative;
+        display: block;
+        text-decoration: none;
+        transition: all .15s linear;
+        color: rgba(36,52,70,.85);
+        font-weight: 600;
+        &:after {
+            background: #3888ff;
+            border-radius: 2px;
+            content: "";
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: block;
+            transition: all .15s linear;
+            opacity: 0;
+            pointer-events: none;
+        }
+        &.router-link-active {
+            color: #3888ff;
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+    &.vertical {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        a:after {
+            left: 0;
+            height: 100%;
+            width: 2px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+html, body {
+    font-family: $font-family;
+}
+
+hr {
+    background-color: $border-color;
+    height: 1px;
+    border: none;
+    margin: 16px 0;
+    display: block;
+}
+
+table {
+    font-size: 13px;
+    width: 100%;
+    border-collapse: collapse;
+    th {
+        font-size: 13px;
+        border: none;
+        border-bottom: 1px solid $border-color;
+        padding: 0 0 17px 0;
+        text-align: left;
+    }
+    tbody {
+        td {
+            padding: 8px 0;
+            
+        }
+    }
+    &.bordered {
+        td {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    &.hover {
+        tbody tr:hover {
+            background-color: lighten($border-color, 55);
+        }
+    }
+    &.fat {
+        font-size: 15px;
+        th, td {
+            padding: 16px;
+        }
+    }
+}
