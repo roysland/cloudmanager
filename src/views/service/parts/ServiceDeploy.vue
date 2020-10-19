@@ -27,3 +27,12 @@
 
     </div>
 </template>
+<script>
+export default {
+    data () {
+        return {
+            service: Object.assign({}, this.$store.state.currentService)
+        }
+    }
+}
+</script>

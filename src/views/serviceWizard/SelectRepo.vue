@@ -17,6 +17,7 @@
                         </li>
                     </ul>
                 </div>
+                <button class="btn blue" @click="nextPage">More</button>
             </section>
     </section>
 </template>
@@ -25,12 +26,14 @@ export default {
     data () {
         return {
             repos: [],
-            selected: null
+            selected: null,
+            page: 1
         }
     },
     methods: {
         async getUserRepos () {
-            let response = await fetch(`http://localhost:8000/user/repos`, {
+            this.repos = []
+            let response = await fetch(`http://localhost:8000/user/repos?page=${this.page}`, {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': 'Bearer ' + this.$store.state.user.api_token
@@ -42,6 +45,10 @@ export default {
         selectRepo (repo) {
             this.$emit('input', repo)
             this.$emit('close')
+        },
+        nextPage () {
+            this.page++
+            this.getUserRepos()
         }
     },
     mounted () {
@@ -51,7 +58,10 @@ export default {
 </script>
 <style lang="scss">
 .repos .list {
+    display: flex;
+    flex-wrap: wrap;
     li {
+        width: 45%;
         cursor: pointer;
         border-radius: 6px;
         padding: 4px;

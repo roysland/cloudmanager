@@ -12,20 +12,10 @@
     
     <portal-target name="sidebar">
     <ul class="menu">
-      <li>
-        <a @click="expand('sub')">
-          <f-icon icon="grid" />
-          <span>Deploy</span>
-          <f-icon icon="chevron-down" />
-        </a>
-        <ul class="menu" v-show="menus.sub">
-            <li><router-link to="/"><span>More</span></router-link></li>
-        </ul>
-      </li>
-      <li>
-        <router-link to="/service/1">
-          <f-icon icon="grid" />
-          <span>Service</span>
+      <li v-for="service in $store.state.services" :key="service.id">
+        <router-link :to="`/service/${service.id}`">
+          <f-icon icon="folder" />
+          <span>{{service.repo}}</span>
         </router-link>
       </li>
     </ul>
@@ -43,13 +33,37 @@ export default {
         return {
             menus: {
                 sub: false
-            }
+            },
+            services: []
         }
     },
     methods: {
         expand (name) {
             this.menus[name] = !this.menus[name]
+        },
+        async getServices () {
+          let response = await fetch('http://localhost:8000/services', {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + this.$store.state.user.api_token,
+                    'Content-type': 'application/json'
+                })
+            })
+
+            let json = await response.json()
+            this.$store.commit('SET_SERVICES', json.services)
         }
+    },
+    watch: {
+      '$store.state.user' () {
+        this.getServices()
+      }
+    },
+    mounted () {
+      if (this.$store.state.user) {
+        this.getServices()
+      }
+
     }
 }
 </script>

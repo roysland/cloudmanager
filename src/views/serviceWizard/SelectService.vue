@@ -13,8 +13,8 @@
             <hr>
             <div class="field">
             <label class="form-label">Select type</label>
-            <select class="form-input" v-model="selected.type">
-                <option v-for="template in templates[selected.short]" :key="template">{{template}}</option>
+            <select class="form-input" v-model="selected.type" @change="setFrontSettings(selected.type)">
+                <option v-for="template in templates[selected.short]" :key="template.name">{{template.name}}</option>
             </select>
             <label class="form-label">Directory with app</label>
             <input type="text" class="form-input" v-model="selected.build.dir" placeholder="/dist">
@@ -50,7 +50,36 @@ export default {
                 { name: 'Container',  short: 'container', desc: 'Custom docker container', icon: 'box', type: null },
             ],
             templates: {
-                front: ['Vue', 'Svelte', 'React', 'Angular'],
+                front: [
+                    {
+                        name: 'Vue',
+                        build: {
+                            dir: '/dist',
+                            cmd: 'npm run build'
+                        }
+                    },
+                    {
+                        name: 'Svelte',
+                        build: {
+                            dir: '/build',
+                            cmd: 'npm run build'
+                        }
+                    },
+                    {
+                        name: 'React',
+                        build: {
+                            dir: '/build',
+                            cmd: 'npm run build'
+                        }
+                    },
+                    {
+                        name: 'Other',
+                        build: {
+                            dir: '',
+                            cmd: ''
+                        }
+                    }
+                ],
                 backend: ['PHP', 'NodeJS', 'Go', 'Python'],
                 database: [
                     { id: 1, name: 'MongoDB', icon: '/images/mongodb.png'},
@@ -71,6 +100,12 @@ export default {
         },
         setDB (db) {
             this.selected.type = db
+        },
+        setFrontSettings (type) {
+            let settings = this.templates.front.find((template) => {
+                return template.name === type
+            })
+            this.selected.build = settings.build
         }
     }
 }

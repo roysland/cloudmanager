@@ -43,7 +43,13 @@
         <span>Logs</span>
       </router-link>
     </li>
-
+    <hr />
+    <li>
+      <router-link  :to="url + '/integration'">
+        <f-icon icon="trello" />
+        <span>Integration</span>
+      </router-link>
+    </li>
   </ul>
 </template>
 <script>

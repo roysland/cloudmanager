@@ -1,7 +1,12 @@
 <template>
   <div class="home">
-    <h1>Simple deployment</h1>
-    <a :href="githubUrl">Auth github</a>
+
+      <div v-if="!$store.state.user" class="flex align-center justify-center">
+      <a :href="githubUrl" class="panel loginGit">
+        <f-icon icon="github" />
+        <span>Login using Github</span>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -12,7 +17,7 @@ export default {
   data () {
     return {
       activeTab: 'dns',
-      githubUrl: 'https://github.com/login/oauth/authorize?scope=user:email&client_id=Iv1.a4b1e2d734263dae' 
+      githubUrl: 'https://github.schibsted.io/login/oauth/authorize?scope=user:email&client_id=Iv1.57fd278a206364eb' 
     }
   }
 }

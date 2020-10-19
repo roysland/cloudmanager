@@ -8,6 +8,7 @@ import ServiceHeaders from './parts/ServiceHeaders'
 import ServiceLogs from './parts/ServiceLogs'
 import ServiceNetwork from './parts/ServiceNetwork'
 import ServiceRedirects from './parts/ServiceRedirects'
+import ServiceIntegration from './parts/ServiceIntegration'
 export default {
     path: '/service/:service',
     component: ServiceIndex,
@@ -56,6 +57,11 @@ export default {
             path: 'redirects',
             name: 'ServiceRedirects',
             component: ServiceRedirects
+        },
+        {
+            path: 'integration',
+            name: 'ServiceIntegration',
+            component: ServiceIntegration
         }
     ]
 }

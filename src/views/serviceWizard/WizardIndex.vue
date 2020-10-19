@@ -8,7 +8,7 @@
         <div v-if="selected.repo">Repo: {{ selected.repo.name }} </div>
     </div>
     <select-service v-if="step === 'service'" v-model="selected.service" @close="step = 'repo'"></select-service>
-    <select-repo v-if="step === 'repo'" v-model="selected.repo" @close="step = 'scale'"></select-repo>
+    <select-repo v-if="step === 'repo' && (selected.service.short === 'front' || selected.service.short === 'backend')" v-model="selected.repo" @close="step = 'scale'"></select-repo>
     <select-scale v-if="step === 'scale' && selected.service.short !== 'front'"></select-scale>
 </div>
 </template>
@@ -29,7 +29,18 @@ export default {
         }
     },
     methods: {
-        createService () {
+        async createService () {
+            let response = await fetch('http://localhost:8000/service/create', {
+                method: 'POST',
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + this.$store.state.user.api_token,
+                    'Content-type': 'application/json'
+                }),
+                body: JSON.stringify(this.selected)
+            })
+
+            let json = await response.json()
+            this.$store.commit('PUSH_SERVICE', json)
 
         },
         resetSettings () {
