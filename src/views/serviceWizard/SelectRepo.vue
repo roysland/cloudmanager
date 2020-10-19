@@ -40,7 +40,7 @@ export default {
                 })
             })
             let json = await response.json()
-            this.repos = json.repos
+            this.repos = json.repos.items
         },
         selectRepo (repo) {
             this.$emit('input', repo)

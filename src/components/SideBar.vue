@@ -15,7 +15,7 @@
       <li v-for="service in $store.state.services" :key="service.id">
         <router-link :to="`/service/${service.id}`">
           <f-icon icon="folder" />
-          <span>{{service.repo}}</span>
+          <span>{{service.repo.name}}</span>
         </router-link>
       </li>
     </ul>
